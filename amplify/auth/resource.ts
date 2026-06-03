@@ -8,4 +8,16 @@ export const auth = defineAuth({
   loginWith: {
     email: true,
   },
+  // Require a phone number so it can be used as the SMS MFA destination.
+  userAttributes: {
+    phoneNumber: {
+      required: true,
+      mutable: true,
+    },
+  },
+  // Enable SMS (phone number) based multi-factor authentication.
+  multifactor: {
+    mode: 'REQUIRED',
+    sms: true,
+  },
 });
